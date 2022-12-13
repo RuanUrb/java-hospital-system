@@ -15,8 +15,9 @@ public class Sistema {
         
     }
     
-    public void janela_login(){
+    public void iniciar(){
         PainelLogin painel_login = new PainelLogin();
+        painel_login.setVisible(true);
     }
     
     
