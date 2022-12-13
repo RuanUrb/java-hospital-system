@@ -41,8 +41,14 @@ public class Sistema {
         return null;
     }
     
+    public void carrega_listas(ArrayList<Funcionario> nova_lista_funcionarios, ArrayList<Paciente> nova_lista_pacientes){
+        this.lista_funcionarios = nova_lista_funcionarios;
+        this.lista_pacientes = nova_lista_pacientes;
+        
+    }
+    
     public void iniciar(){
-        PainelLogin painel_login = new PainelLogin();
+        PainelLogin painel_login = new PainelLogin(this.lista_funcionarios, this.lista_pacientes);
         painel_login.setVisible(true);
     }
     

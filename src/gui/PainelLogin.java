@@ -7,14 +7,19 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import oop6.Funcionario;
+import oop6.Sistema;
 
 public class PainelLogin extends javax.swing.JFrame {
 
-    public PainelLogin() {
+    public PainelLogin(ArrayList<Funcionario> nova_lista_funcionarios, ArrayList<Paciente> nova_lista_pacientes) {
+        Sistema sistema_painel = new Sistema();
+        sistema_painel.carrega_listas(nova_lista_funcionarios, nova_lista_pacientes);
         initComponents();
     }
 
@@ -135,10 +140,6 @@ public class PainelLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        /*nao coloquei condicoes nem outras chamadas de metodos porque nao sei 
-        como voce quer fazer, vai faltar tambem aquilo de nao permitir que ao 
-        fechar uma janela, feche todas junto
-        */
         String email = jTextField1.getText();
         String password = String.valueOf(jPasswordField1.getPassword());
         
@@ -146,7 +147,6 @@ public class PainelLogin extends javax.swing.JFrame {
         //se for encontrado, ver o tipo do objeto
         //a depender do tipo, uma janela especifica sera aberta
         
-        System.out.println("those are email and password: " + email + " " + password);
         
         /*
         PainelMedico medico = new PainelMedico();
