@@ -144,6 +144,9 @@ public class PainelLogin extends javax.swing.JFrame {
         
         PainelADM adm = new PainelADM();
         adm.setVisible(true);
+        
+        PainelPaciente paciente = new PainelPaciente();
+        paciente.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public static void main(String args[]) {
