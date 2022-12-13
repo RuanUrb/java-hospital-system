@@ -13,14 +13,19 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import oop6.Funcionario;
+import oop6.Paciente;
 import oop6.Sistema;
 
 public class PainelLogin extends javax.swing.JFrame {
-
-    public PainelLogin(ArrayList<Funcionario> nova_lista_funcionarios, ArrayList<Paciente> nova_lista_pacientes) {
-        Sistema sistema_painel = new Sistema();
-        sistema_painel.carrega_listas(nova_lista_funcionarios, nova_lista_pacientes);
+    Sistema sistema_painel;
+    
+    public PainelLogin() {
+        sistema_painel = new Sistema();
         initComponents();
+    }
+    
+    public void system_load_list(ArrayList<Funcionario> lista_funcionarios, ArrayList<Paciente> lista_pacientes){
+        sistema_painel.carrega_listas(lista_funcionarios, lista_pacientes);
     }
 
     /**
@@ -143,9 +148,23 @@ public class PainelLogin extends javax.swing.JFrame {
         String email = jTextField1.getText();
         String password = String.valueOf(jPasswordField1.getPassword());
         
-        //verificar ambas listas do sistema se há pessoas com tal email + senha.
-        //se for encontrado, ver o tipo do objeto
-        //a depender do tipo, uma janela especifica sera aberta
+        Funcionario funça = sistema_painel.procura_lista_funcionarios(email, password);
+        Paciente paciente = sistema_painel.procura_lista_pacientes(email, password);
+        
+        if(funça == null && paciente == null){
+            //janela de erro.
+            System.out.println("Encontrado porra nenhuma");
+        }
+        
+        if(funça != null && paciente == null){
+            //ver o tipo de funcionário a partir do tipo contido na lista
+            //abrir uma janela especifica pra ele
+            System.out.println("Funça encontrado");
+        }
+        if(paciente != null && funça == null){
+            //abrir janela paciente
+            System.out.println("Paciente encontrado");
+        }
         
         
         /*

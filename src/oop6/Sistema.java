@@ -48,8 +48,9 @@ public class Sistema {
     }
     
     public void iniciar(){
-        PainelLogin painel_login = new PainelLogin(this.lista_funcionarios, this.lista_pacientes);
+        PainelLogin painel_login = new PainelLogin();
         painel_login.setVisible(true);
+        painel_login.system_load_list(this.lista_funcionarios, this.lista_pacientes);
     }
     
     
