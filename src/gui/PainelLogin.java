@@ -135,8 +135,15 @@ public class PainelLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        /*nao coloquei condicoes nem outras chamadas de metodos porque nao sei 
+        como voce quer fazer, vai faltar tambem aquilo de nao permitir que ao 
+        fechar uma janela, feche todas junto
+        */
         PainelMedico medico = new PainelMedico();
         medico.setVisible(true);
+        
+        PainelADM adm = new PainelADM();
+        adm.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public static void main(String args[]) {
