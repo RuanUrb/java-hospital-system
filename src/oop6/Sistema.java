@@ -32,10 +32,13 @@ public class Sistema {
         return null;
     }
     
-    public void procura_lista_funcionarios(String email, String password){
+    public Funcionario procura_lista_funcionarios(String email, String password){
         for(Funcionario funcionario : lista_funcionarios){
-            if()
+            if(funcionario.getEmail().compareTo(email) == 0 && funcionario.getPassword().compareTo(password) ==0){
+                return funcionario;
+            }
         }
+        return null;
     }
     
     public void iniciar(){

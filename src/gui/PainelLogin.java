@@ -141,6 +141,11 @@ public class PainelLogin extends javax.swing.JFrame {
         */
         String email = jTextField1.getText();
         String password = String.valueOf(jPasswordField1.getPassword());
+        
+        //verificar ambas listas do sistema se há pessoas com tal email + senha.
+        //se for encontrado, ver o tipo do objeto
+        //a depender do tipo, uma janela especifica sera aberta
+        
         System.out.println("those are email and password: " + email + " " + password);
         
         /*
