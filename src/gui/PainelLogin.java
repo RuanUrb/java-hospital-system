@@ -139,11 +139,17 @@ public class PainelLogin extends javax.swing.JFrame {
         como voce quer fazer, vai faltar tambem aquilo de nao permitir que ao 
         fechar uma janela, feche todas junto
         */
+        String email = jTextField1.getText();
+        String password = String.valueOf(jPasswordField1.getPassword());
+        System.out.println("those are email and password: " + email + " " + password);
+        
+        /*
         PainelMedico medico = new PainelMedico();
         medico.setVisible(true);
         
         PainelADM adm = new PainelADM();
         adm.setVisible(true);
+        */
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public static void main(String args[]) {
