@@ -145,6 +145,7 @@ public class PainelLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
         String email = jTextField1.getText();
         String password = String.valueOf(jPasswordField1.getPassword());
         
@@ -174,13 +175,7 @@ public class PainelLogin extends javax.swing.JFrame {
         }
         
         
-        /*
-        PainelMedico medico = new PainelMedico();
-        medico.setVisible(true);
-        
-        PainelADM adm = new PainelADM();
-        adm.setVisible(true);
-        */
+ 
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public static void main(String args[]) {
