@@ -88,11 +88,13 @@ public class PainelPaciente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        PainelAtestadosPaciente atestadosPaciente = new PainelAtestadosPaciente();
+        atestadosPaciente.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         
+        PainelConsultasPaciente consultasPaciente = new PainelConsultasPaciente();
+        consultasPaciente.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
