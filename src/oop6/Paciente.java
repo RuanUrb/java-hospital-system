@@ -15,6 +15,10 @@ public class Paciente {
         this.cpf = cpf;
     }
     
+    public Paciente(){
+        
+    }
+    
     
     public String getEmail(){
         return this.email;
@@ -22,5 +26,13 @@ public class Paciente {
     
     public String getPassword(){
         return this.password;
+    }
+    
+    public String getNome(){
+        return this.nome;
+    }
+    
+    public long getCPF(){
+        return this.cpf;
     }
 }

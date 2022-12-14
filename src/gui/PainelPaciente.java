@@ -1,13 +1,25 @@
 
 package gui;
 
-public class PainelPaciente extends javax.swing.JFrame {
+import oop6.Paciente;
 
+public class PainelPaciente extends javax.swing.JFrame {
+    Paciente paciente;
     
     public PainelPaciente() {
+        paciente = new Paciente();
         initComponents();
     }
-
+    
+    public void setPaciente(Paciente novo_paciente){
+        this.paciente = novo_paciente;
+    }
+    
+    public void setLabels(){
+        jLabel1.setText("Bem vindo(a), ");
+        jLabel2.setText(this.paciente.getNome());
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

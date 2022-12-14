@@ -161,6 +161,7 @@ public class PainelLogin extends javax.swing.JFrame {
             if(funca.getClass().getSimpleName().compareTo("Admin") == 0){
                 PainelADM painel_adm = new PainelADM();
                 painel_adm.setVisible(true);
+                this.setVisible(false);
             }
             else if(funca.getClass().getSimpleName().compareTo("Enfermeiro") == 0){
                 //abre janela enfermeiro
@@ -168,10 +169,15 @@ public class PainelLogin extends javax.swing.JFrame {
             else{
                 PainelMedico painel_medico = new PainelMedico();
                 painel_medico.setVisible(true);
+                this.setVisible(false);
             }
         }
         if(paciente != null && funca == null){
-           
+           PainelPaciente painel_paciente = new PainelPaciente();
+           painel_paciente.setPaciente(paciente);
+           painel_paciente.setLabels();
+           painel_paciente.setVisible(true);
+           this.setVisible(false);
         }
         
         
