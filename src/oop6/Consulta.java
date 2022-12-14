@@ -6,7 +6,6 @@ import java.util.Date;
 
 public class Consulta {
     private String nome_paciente, sala, enfermidade, nome_medico;
-    
     private Date data;
     private float valor;
     
