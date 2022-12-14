@@ -7,15 +7,25 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import oop6.Funcionario;
+import oop6.Paciente;
+import oop6.Sistema;
 
 public class PainelLogin extends javax.swing.JFrame {
-
+    Sistema sistema_painel;
+    
     public PainelLogin() {
+        sistema_painel = new Sistema();
         initComponents();
+    }
+    
+    public void system_load_list(ArrayList<Funcionario> lista_funcionarios, ArrayList<Paciente> lista_pacientes){
+        sistema_painel.carrega_listas(lista_funcionarios, lista_pacientes);
     }
 
     /**
@@ -135,11 +145,30 @@ public class PainelLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        /*nao coloquei condicoes nem outras chamadas de metodos porque nao sei 
-        como voce quer fazer, vai faltar tambem aquilo de nao permitir que ao 
-        fechar uma janela, feche todas junto
-        */
-       
+
+        String email = jTextField1.getText();
+        String password = String.valueOf(jPasswordField1.getPassword());
+        
+        Funcionario funça = sistema_painel.procura_lista_funcionarios(email, password);
+        Paciente paciente = sistema_painel.procura_lista_pacientes(email, password);
+        
+        if(funça == null && paciente == null){
+            //janela de erro.
+            System.out.println("Encontrado porra nenhuma");
+        }
+        
+        if(funça != null && paciente == null){
+            //ver o tipo de funcionário a partir do tipo contido na lista
+            //abrir uma janela especifica pra ele
+            System.out.println("Funça encontrado");
+        }
+        if(paciente != null && funça == null){
+            //abrir janela paciente
+            System.out.println("Paciente encontrado");
+        }
+        
+        
+ 
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public static void main(String args[]) {
