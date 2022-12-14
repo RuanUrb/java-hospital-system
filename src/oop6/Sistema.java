@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class Sistema {
     ArrayList<Funcionario> lista_funcionarios;
     ArrayList<Paciente> lista_pacientes;
+    ArrayList<Consulta> lista_consultas;
     
     public Sistema(){
        lista_funcionarios = new ArrayList<>();
