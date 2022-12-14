@@ -104,7 +104,9 @@ public class PainelPaciente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         
+         PainelConsultasPaciente painel_consultas_paciente = new PainelConsultasPaciente();
+         painel_consultas_paciente.setVisible(true);
+         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
