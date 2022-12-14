@@ -148,22 +148,29 @@ public class PainelLogin extends javax.swing.JFrame {
         String email = jTextField1.getText();
         String password = String.valueOf(jPasswordField1.getPassword());
         
-        Funcionario funça = sistema_painel.procura_lista_funcionarios(email, password);
+        Funcionario funca = sistema_painel.procura_lista_funcionarios(email, password);
         Paciente paciente = sistema_painel.procura_lista_pacientes(email, password);
         
-        if(funça == null && paciente == null){
+        if(funca == null && paciente == null){
             //janela de erro.
             System.out.println("Encontrado porra nenhuma");
         }
         
-        if(funça != null && paciente == null){
-            //ver o tipo de funcionário a partir do tipo contido na lista
-            //abrir uma janela especifica pra ele
-            System.out.println("Funça encontrado");
+        if(funca != null && paciente == null){
+            if(funca.getClass().getSimpleName().compareTo("Admin") == 0){
+                PainelADM painel_adm = new PainelADM();
+                painel_adm.setVisible(true);
+            }
+            else if(funca.getClass().getSimpleName().compareTo("Enfermeiro") == 0){
+                //abre janela enfermeiro
+            }
+            else{
+                PainelMedico painel_medico = new PainelMedico();
+                painel_medico.setVisible(true);
+            }
         }
-        if(paciente != null && funça == null){
-            //abrir janela paciente
-            System.out.println("Paciente encontrado");
+        if(paciente != null && funca == null){
+           
         }
         
         
