@@ -5,6 +5,8 @@ public class PainelAtestadosPaciente extends javax.swing.JFrame {
 
     public PainelAtestadosPaciente() {
         initComponents();
+        tabelaAtestados.setDefaultEditor(Object.class, null);
+        tabelaAtestados.getTableHeader().setReorderingAllowed(false);
     }
 
     
@@ -16,7 +18,7 @@ public class PainelAtestadosPaciente extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelaAtestados = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -25,7 +27,7 @@ public class PainelAtestadosPaciente extends javax.swing.JFrame {
 
         jButton1.setText("Voltar");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaAtestados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -44,7 +46,7 @@ public class PainelAtestadosPaciente extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(tabelaAtestados);
 
         jScrollPane3.setViewportView(jScrollPane2);
 
@@ -121,6 +123,6 @@ public class PainelAtestadosPaciente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tabelaAtestados;
     // End of variables declaration//GEN-END:variables
 }
