@@ -139,14 +139,7 @@ public class PainelLogin extends javax.swing.JFrame {
         como voce quer fazer, vai faltar tambem aquilo de nao permitir que ao 
         fechar uma janela, feche todas junto
         */
-        PainelMedico medico = new PainelMedico();
-        medico.setVisible(true);
-        
-        PainelADM adm = new PainelADM();
-        adm.setVisible(true);
-        
-        PainelPaciente paciente = new PainelPaciente();
-        paciente.setVisible(true);
+       
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public static void main(String args[]) {
