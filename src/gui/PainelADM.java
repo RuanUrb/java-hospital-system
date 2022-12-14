@@ -1,20 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package gui;
 
 import javax.swing.JFrame;
 
-/**
- *
- * @author zania
- */
 public class PainelADM extends javax.swing.JFrame {
 
-    /**
-     * Creates new form PainelADM
-     */
+  
     public PainelADM() {
         initComponents();
     }
@@ -95,18 +86,16 @@ public class PainelADM extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        PainelCadastro cadastro = new PainelCadastro();
-        cadastro.setVisible(true);
+        PainelCadastroPaciente cadastroPaciente = new PainelCadastroPaciente();
+        cadastroPaciente.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        PainelCadastro cadastro = new PainelCadastro();
-        cadastro.setVisible(true);     
+        PainelCadastroFuncionario cadastroFuncionario = new PainelCadastroFuncionario();
+        cadastroFuncionario.setVisible(true);     
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+   
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
