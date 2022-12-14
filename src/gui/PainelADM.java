@@ -42,6 +42,11 @@ public class PainelADM extends javax.swing.JFrame {
         });
 
         jButton3.setText("Visualizar Quadro de Funcionários");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Baskerville Old Face", 0, 36)); // NOI18N
         jLabel1.setText("Painel Administrativo");
@@ -94,6 +99,11 @@ public class PainelADM extends javax.swing.JFrame {
         PainelCadastroFuncionario cadastroFuncionario = new PainelCadastroFuncionario();
         cadastroFuncionario.setVisible(true);     
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        PainelQuadroFuncionarios quadroFuncionarios = new PainelQuadroFuncionarios();
+        quadroFuncionarios.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
    
     public static void main(String args[]) {
