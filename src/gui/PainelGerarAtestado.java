@@ -8,9 +8,7 @@ import oop6.Sistema;
 
 public class PainelGerarAtestado extends javax.swing.JFrame {
     Sistema sistema_painel_atestado;
-    Medico medico;
-    public int duracao;
-    
+    Medico medico;    
     
     public PainelGerarAtestado() {
         sistema_painel_atestado = new Sistema();
@@ -159,16 +157,17 @@ public class PainelGerarAtestado extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String nome_paciente = jTextField1.getText();
         String razao = jTextField2.getText();
+        int duracao;
         try{
-            int duracao = Integer.parseInt(jTextField3.getText());
+            duracao = Integer.parseInt(jTextField3.getText());
+            Atestado novo_atestado = new Atestado(nome_paciente, this.medico.getNome(), razao, this.medico.getCRM(), duracao);
+            this.sistema_painel_atestado.adiciona(novo_atestado);
+            JOptionPane.showMessageDialog(null, "Atestado gerado com sucesso.", "Sistema", JOptionPane.INFORMATION_MESSAGE);
         }catch(NumberFormatException e){
-            JOptionPane.showMessageDialog(null, "Digite um valor válido",
+            JOptionPane.showMessageDialog(null, "Digite um valor válido.",
                     "Sistema", JOptionPane.ERROR_MESSAGE);
         }
         
-        Atestado novo_atestado = new Atestado(nome_paciente, this.medico.getNome(), razao, this.medico.getCRM(), duracao);
-        this.sistema_painel_atestado.adiciona(novo_atestado);
-        //janela atestado criado com sucesso
         jTextField1.setText("");
         jTextField2.setText("");
         jTextField3.setText("");
