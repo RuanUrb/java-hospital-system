@@ -3,36 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< Updated upstream
-            <file>file:/C:/Users/Zeo/Documents/NetBeansProjects/OOP6/src/oop6/Funcionario.java</file>
-            <file>file:/C:/Users/Zeo/Documents/NetBeansProjects/OOP6/src/oop6/Admin.java</file>
-            <file>file:/C:/Users/Zeo/Documents/NetBeansProjects/OOP6/src/oop6/Medico.java</file>
-            <file>file:/C:/Users/Zeo/Documents/NetBeansProjects/OOP6/src/oop6/DummyDB.java</file>
-            <file>file:/C:/Users/Zeo/Documents/NetBeansProjects/OOP6/src/gui/PainelPaciente.java</file>
-            <file>file:/C:/Users/Zeo/Documents/NetBeansProjects/OOP6/src/oop6/Main.java</file>
-            <file>file:/C:/Users/Zeo/Documents/NetBeansProjects/OOP6/src/oop6/Paciente.java</file>
-            <file>file:/C:/Users/Zeo/Documents/NetBeansProjects/OOP6/src/gui/PainelCadastro.java</file>
-            <file>file:/C:/Users/Zeo/Documents/NetBeansProjects/OOP6/src/gui/PainelLogin.java</file>
-            <file>file:/C:/Users/Zeo/Documents/NetBeansProjects/OOP6/src/oop6/Consulta.java</file>
-            <file>file:/C:/Users/Zeo/Documents/NetBeansProjects/OOP6/src/exception/Exceptions.java</file>
-=======
-            <file>file:/C:/Users/Zeo/Documents/NetBeansProjects/OOP6/src/gui/PainelDesmarcarConsulta.java</file>
             <file>file:/C:/Users/Zeo/Documents/NetBeansProjects/OOP6/src/gui/PainelAtestadosPaciente.java</file>
-            <file>file:/C:/Users/Zeo/Documents/NetBeansProjects/OOP6/src/gui/PainelConsultasPaciente.java</file>
-            <file>file:/C:/Users/Zeo/Documents/NetBeansProjects/OOP6/src/gui/PainelFuncionario.java</file>
-            <file>file:/C:/Users/Zeo/Documents/NetBeansProjects/OOP6/src/gui/PainelCadastroFuncionario.java</file>
+            <file>file:/C:/Users/Zeo/Documents/NetBeansProjects/OOP6/src/oop6/Atestado.java</file>
             <file>file:/C:/Users/Zeo/Documents/NetBeansProjects/OOP6/src/gui/PainelGerarAtestado.java</file>
-            <file>file:/C:/Users/Zeo/Documents/NetBeansProjects/OOP6/src/gui/PainelADM.java</file>
-            <file>file:/C:/Users/Zeo/Documents/NetBeansProjects/OOP6/src/gui/PainelCadastroPaciente.java</file>
-            <file>file:/C:/Users/Zeo/Documents/NetBeansProjects/OOP6/src/gui/PainelConsultasMedico.java</file>
-            <file>file:/C:/Users/Zeo/Documents/NetBeansProjects/OOP6/src/gui/PainelLogin.java</file>
-            <file>file:/C:/Users/Zeo/Documents/NetBeansProjects/OOP6/src/gui/PainelMarcarConsulta.java</file>
             <file>file:/C:/Users/Zeo/Documents/NetBeansProjects/OOP6/src/oop6/DummyDB.java</file>
-            <file>file:/C:/Users/Zeo/Documents/NetBeansProjects/OOP6/src/gui/PainelPaciente.java</file>
-            <file>file:/C:/Users/Zeo/Documents/NetBeansProjects/OOP6/src/gui/PainelQuadroFuncionarios.java</file>
-            <file>file:/C:/Users/Zeo/Documents/NetBeansProjects/OOP6/src/oop6/Consulta.java</file>
->>>>>>> Stashed changes
-            <file>file:/C:/Users/Zeo/Documents/NetBeansProjects/OOP6/src/oop6/Sistema.java</file>
         </group>
     </open-files>
 </project-private>
