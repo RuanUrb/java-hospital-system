@@ -1,14 +1,33 @@
 
 package gui;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import oop6.Admin;
+import oop6.Medico;
+import oop6.Sistema;
+
 
 public class PainelQuadroFuncionarios extends javax.swing.JFrame {
-
+    Sistema sistema_quadro;
+    Admin admin;
+    
+    public void setAdmin(Admin novo_admin){
+        this.admin = novo_admin;
+    }
+    
+    public Admin getAdmin(){
+        return this.admin;
+    }
+    
  
     public PainelQuadroFuncionarios() {
+        sistema_quadro = new Sistema();
+        admin = new Admin();
         initComponents();
-        tabelaQuadro.setDefaultEditor(Object.class, null);
-        tabelaQuadro.getTableHeader().setReorderingAllowed(false);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -23,35 +42,53 @@ public class PainelQuadroFuncionarios extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabelaQuadro = new javax.swing.JTable();
+        jTable1 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Quadro de Funcionários");
 
-        tabelaQuadro.setModel(new javax.swing.table.DefaultTableModel(
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Nome", "Salario", "CodF", "CRM"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Float.class, java.lang.Integer.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
-        jScrollPane1.setViewportView(tabelaQuadro);
+        jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setResizable(false);
+            jTable1.getColumnModel().getColumn(1).setResizable(false);
+            jTable1.getColumnModel().getColumn(2).setResizable(false);
+            jTable1.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         jScrollPane2.setViewportView(jScrollPane1);
+
+        jButton1.setText("Voltar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -66,6 +103,10 @@ public class PainelQuadroFuncionarios extends javax.swing.JFrame {
                         .addGap(123, 123, 123)
                         .addComponent(jLabel1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(218, 218, 218))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -74,12 +115,53 @@ public class PainelQuadroFuncionarios extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(26, 26, 26))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        PainelADM painel_ADM = new PainelADM();
+        painel_ADM.sistema_painel_adm.carrega_listas(this.sistema_quadro.lista_funcionarios, this.sistema_quadro.lista_pacientes);
+        painel_ADM.sistema_painel_adm.carrega_listas_medicas(this.sistema_quadro.lista_consultas, this.sistema_quadro.lista_atestados);
+        painel_ADM.setAdmin(this.admin);
+        
+        painel_ADM.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+    
+    public void showFuncas(){
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        for(int i = 0; i < sistema_quadro.lista_funcionarios.size(); i++){
+            model.addRow(recupera_dados(i));
+        }
+        
+    }
+    
+    private String[] recupera_dados(int i){
+        List<String> dados = new ArrayList<>();
+        String nome = this.sistema_quadro.lista_funcionarios.get(i).getNome();
+            if(nome.compareTo(this.getAdmin().getNome()) == 0){
+                nome = nome + " (Você)";
+            }
+        String salario = String.valueOf(sistema_quadro.lista_funcionarios.get(i).getSalario());
+        String cod_p = Integer.toString(sistema_quadro.lista_funcionarios.get(i).get_codF());
+        String crm = "-";
+        if((sistema_quadro.lista_funcionarios.get(i).getClass().getSimpleName()).compareTo("Medico") == 0){
+            Medico medico = (Medico) sistema_quadro.lista_funcionarios.get(i);
+            crm = medico.getCRM();
+        }
+        dados.add(nome);
+        dados.add(salario);
+        dados.add(cod_p);
+        dados.add(crm);
+        String[] stringarray = dados.toArray(new String[0]);
+        return stringarray;
+    }
+    
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -114,9 +196,10 @@ public class PainelQuadroFuncionarios extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable tabelaQuadro;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,16 +6,15 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
-import oop6.Paciente;
+import oop6.Medico;
 import oop6.Sistema;
 
-
-public class PainelConsultasPaciente extends javax.swing.JFrame {
+public class PainelConsultasMedico extends javax.swing.JFrame {
     Sistema sistema_painel_consulta_paciente;
-    Paciente paciente;
+    Medico medico;
     
-    public PainelConsultasPaciente() {
-        paciente = new Paciente();
+    public PainelConsultasMedico() {
+        medico = new Medico();
         sistema_painel_consulta_paciente = new Sistema();
         initComponents();
         this.setLocationRelativeTo(null);
@@ -23,38 +22,40 @@ public class PainelConsultasPaciente extends javax.swing.JFrame {
         tabelaConsultas.getTableHeader().setReorderingAllowed(false);
     }
     
-    public void setPaciente(Paciente novo_paciente){
-        this.paciente = novo_paciente;
+    public void setMedico(Medico novo_medico){
+        this.medico = novo_medico;
     }
     
-    public Paciente getPaciente(){
-        return this.paciente;
+    public Medico getMedico(){
+        return this.medico;
     }
     
     public void carrega_consultas(){
         DefaultTableModel model = (DefaultTableModel) tabelaConsultas.getModel();
         for(int i = 0; i < this.sistema_painel_consulta_paciente.lista_consultas.size(); i++){
-            if(this.paciente.getNome().compareTo(this.sistema_painel_consulta_paciente.lista_consultas.get(i).get_nome_paciente()) == 0){
+            if(this.medico.getNome().compareTo(this.sistema_painel_consulta_paciente.lista_consultas.get(i).get_nome_medico()) == 0){
                 model.addRow(recupera_dados(i));
             }
         }
     }
     
-    private String[] recupera_dados(int i){
+    public String[] recupera_dados(int i){
         List<String> dados = new ArrayList<>();
-        String nome_medico = this.sistema_painel_consulta_paciente.lista_consultas.get(i).get_nome_medico();
-        String sala = this.sistema_painel_consulta_paciente.lista_consultas.get(i).get_sala();
-        String valor = Float.toString(this.sistema_painel_consulta_paciente.lista_consultas.get(i).get_valor());
+        String nome_paciente = this.sistema_painel_consulta_paciente.lista_consultas.get(i).get_nome_paciente();
         LocalDate date = this.sistema_painel_consulta_paciente.lista_consultas.get(i).get_data(); 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MM yyyy");
         String data = date.format(formatter);
-        dados.add(nome_medico);
+        String sala = this.sistema_painel_consulta_paciente.lista_consultas.get(i).get_sala();
+        String valor = Float.toString(this.sistema_painel_consulta_paciente.lista_consultas.get(i).get_valor());
+        String numero = Integer.toString(this.sistema_painel_consulta_paciente.lista_consultas.get(i).getID());
+        dados.add(nome_paciente);
         dados.add(data);
         dados.add(sala);
         dados.add(valor);
-        String[] stringarray = dados.toArray(new String[0]);
-        return stringarray;
-   }
+        dados.add(numero);
+        String[] stringArray = dados.toArray(new String[0]);
+        return stringArray;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -70,7 +71,7 @@ public class PainelConsultasPaciente extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaConsultas = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        botaoVoltar = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
 
@@ -81,11 +82,11 @@ public class PainelConsultasPaciente extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Médico", "Data", "Sala", "Valor"
+                "Paciente", "Data", "Sala", "Valor", "Número"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -100,10 +101,10 @@ public class PainelConsultasPaciente extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel2.setText("Consultas Marcadas");
 
-        jButton1.setText("Voltar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botaoVoltar.setText("Voltar");
+        botaoVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botaoVoltarActionPerformed(evt);
             }
         });
 
@@ -112,40 +113,42 @@ public class PainelConsultasPaciente extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 787, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 23, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addComponent(botaoVoltar)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addGap(137, 137, 137))))
+                        .addGap(296, 296, 296))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(11, 11, 11)
                 .addComponent(jLabel2)
-                .addGap(34, 34, 34)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addComponent(jButton1))
+                .addComponent(botaoVoltar))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        PainelPaciente painel_paciente = new PainelPaciente();
-        painel_paciente.setPaciente(paciente);
-        painel_paciente.setLabels();
-        painel_paciente.setVisible(true);
-        painel_paciente.sistema_painel_paciente.carrega_listas(this.sistema_painel_consulta_paciente.lista_funcionarios, this.sistema_painel_consulta_paciente.lista_pacientes);
-        painel_paciente.sistema_painel_paciente.carrega_listas_medicas(this.sistema_painel_consulta_paciente.lista_consultas, this.sistema_painel_consulta_paciente.lista_atestados);
+    private void botaoVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoVoltarActionPerformed
+        PainelMedico painel_medico = new PainelMedico();
+        painel_medico.setMedico(this.medico);
+        painel_medico.sistema_painel_medico.carrega_listas(this.sistema_painel_consulta_paciente.lista_funcionarios, this.sistema_painel_consulta_paciente.lista_pacientes);
+        painel_medico.sistema_painel_medico.carrega_listas_medicas(this.sistema_painel_consulta_paciente.lista_consultas, this.sistema_painel_consulta_paciente.lista_atestados);
+        painel_medico.setMedico(this.getMedico());
+        painel_medico.setLabels();
+        painel_medico.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_botaoVoltarActionPerformed
 
    
     public static void main(String args[]) {
@@ -162,27 +165,29 @@ public class PainelConsultasPaciente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PainelConsultasPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PainelConsultasMedico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PainelConsultasPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PainelConsultasMedico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PainelConsultasPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PainelConsultasMedico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PainelConsultasPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PainelConsultasMedico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PainelConsultasPaciente().setVisible(true);
+                new PainelConsultasMedico().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton botaoVoltar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

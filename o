@@ -1,0 +1,290 @@
+[33mcommit e4658cfb9b3aefb5095c2b77fb63d3e453801748[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: RuanUrb <ruaurb@alunos.utfpr.edu.br>
+Date:   Thu Dec 15 06:27:38 2022 -0300
+
+    Medico Consulta finished
+
+[33mcommit 0ed5f279fce9711ac90a45e4e89e5aa26e54b2e7[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: RuanUrb <ruaurb@alunos.utfpr.edu.br>
+Date:   Thu Dec 15 05:30:04 2022 -0300
+
+    Unexpected bugs fixed
+
+[33mcommit 345d1ac4e747741a12cc859124d6a9a36eb4f070[m
+Author: RuanUrb <ruaurb@alunos.utfpr.edu.br>
+Date:   Thu Dec 15 05:22:03 2022 -0300
+
+    Painel Funcionario implemented
+
+[33mcommit 3420c361fddad4a6981d954e2374fede77d7e827[m
+Author: RuanUrb <ruaurb@alunos.utfpr.edu.br>
+Date:   Thu Dec 15 04:42:38 2022 -0300
+
+    Final GUI's added
+
+[33mcommit 4012263d390a37ad59dc4f5beb6345392d3b777d[m
+Author: RuanUrb <ruaurb@alunos.utfpr.edu.br>
+Date:   Thu Dec 15 04:36:58 2022 -0300
+
+    Paciente Consultas added
+
+[33mcommit dfa535d54ef9279cf7b2b100300efa2d6c5b05aa[m
+Author: RuanUrb <ruaurb@alunos.utfpr.edu.br>
+Date:   Thu Dec 15 03:50:40 2022 -0300
+
+    Atestados Paciente added
+
+[33mcommit faa51ac4045d1422e2f54228ef60b3e119ee1ea2[m
+Author: RuanUrb <ruaurb@alunos.utfpr.edu.br>
+Date:   Thu Dec 15 03:27:29 2022 -0300
+
+    Atestado list added
+
+[33mcommit 8266771b3341af965f4d0f110316117ea044a7a9[m
+Author: RuanUrb <ruaurb@alunos.utfpr.edu.br>
+Date:   Thu Dec 15 01:16:16 2022 -0300
+
+    Cadastro Funcionario functionality added
+
+[33mcommit ff8f05d07eba6ab2ba49b05184a8d7a9ecd8b62b[m
+Author: RuanUrb <ruaurb@alunos.utfpr.edu.br>
+Date:   Thu Dec 15 00:57:29 2022 -0300
+
+    Cadastrar Funcionario window done
+
+[33mcommit 13ba6dc9f0cbaa7f775cc931fe6b466e9f95c81b[m
+Author: RuanUrb <ruaurb@alunos.utfpr.edu.br>
+Date:   Thu Dec 15 00:10:30 2022 -0300
+
+    Quadro de Funcionarios working
+
+[33mcommit d1114714bfa8f01ad65772159f188db67839e902[m
+Author: RuanUrb <ruaurb@alunos.utfpr.edu.br>
+Date:   Wed Dec 14 22:39:06 2022 -0300
+
+    Gerar Atestado done
+
+[33mcommit 8ae462586162cfc43424972138d782e012f550c6[m
+Author: RuanUrb <ruaurb@alunos.utfpr.edu.br>
+Date:   Wed Dec 14 22:19:28 2022 -0300
+
+    Gerar Atestado Panel created
+
+[33mcommit 88dd8c0ccacaddb491e082d5d236845435cfd141[m
+Author: RuanUrb <ruaurb@alunos.utfpr.edu.br>
+Date:   Wed Dec 14 21:44:52 2022 -0300
+
+    To andreas
+
+[33mcommit 1157cd0f519847e4f931303ab81f9c6c50fe6bee[m
+Author: RuanUrb <ruaurb@alunos.utfpr.edu.br>
+Date:   Wed Dec 14 21:27:39 2022 -0300
+
+    nothing special
+
+[33mcommit 2d2af3ade74f435cbeba5c8101e0f4fe398a09ea[m
+Author: RuanUrb <ruaurb@alunos.utfpr.edu.br>
+Date:   Wed Dec 14 21:27:25 2022 -0300
+
+    nothing special
+
+[33mcommit 6e3c04d2fc6c88e684f4aaabb2ea87b0f5602f64[m
+Author: RuanUrb <ruaurb@alunos.utfpr.edu.br>
+Date:   Wed Dec 14 18:06:37 2022 -0300
+
+    Back button to window tree added
+
+[33mcommit 621a0b8ddf51c863a0ec9197a1735759fd1f7b81[m
+Author: RuanUrb <ruaurb@alunos.utfpr.edu.br>
+Date:   Wed Dec 14 11:07:25 2022 -0300
+
+    Window tree 'back button' fixed
+
+[33mcommit 9870afe610588867f8ff3b029850c0f8b55cf64a[m
+Author: RuanUrb <ruaurb@alunos.utfpr.edu.br>
+Date:   Wed Dec 14 09:44:27 2022 -0300
+
+    Getters and Setters for patient_code and employee_code
+
+[33mcommit fc9225aec419ea0cd3d07128e0ed52b808f953eb[m
+Merge: 81a616a 6faff39
+Author: RuanUrb <ruaurb@alunos.utfpr.edu.br>
+Date:   Wed Dec 14 09:29:13 2022 -0300
+
+    Auto merge conflict fixes
+
+[33mcommit 81a616a2ddc6b2684928002eb3323747b92c3330[m
+Author: RuanUrb <ruaurb@alunos.utfpr.edu.br>
+Date:   Wed Dec 14 09:15:58 2022 -0300
+
+    Patient panel + linkage to next window
+
+[33mcommit 6faff395dafe7a218d8a7dc52ea5009dd4387209[m
+Author: ZaniAndrei <zaniandrei1@gmail.com>
+Date:   Wed Dec 14 00:09:34 2022 -0300
+
+    Quadro de funcionarios implementado
+
+[33mcommit abc82b1e10cf42a57fb8b23e10e5e122e75ff3dd[m
+Author: ZaniAndrei <zaniandrei1@gmail.com>
+Date:   Tue Dec 13 23:56:05 2022 -0300
+
+    Agora nao da para editar as tabelas e as colunas nao mexem
+
+[33mcommit 7735146a9a28152a80aca7d4428c6a36ed93df50[m
+Author: RuanUrb <ruaurb@alunos.utfpr.edu.br>
+Date:   Tue Dec 13 23:55:19 2022 -0300
+
+    Consulta list added to Patients. Another linked window added.
+
+[33mcommit 2d4a083f4091f004bbda67d4388d69393d94c65e[m
+Author: RuanUrb <ruaurb@alunos.utfpr.edu.br>
+Date:   Tue Dec 13 23:36:25 2022 -0300
+
+    More window linkage
+
+[33mcommit f46bbe25b4b5c5dfe4ce736dbba7d12674c60c94[m
+Author: ZaniAndrei <zaniandrei1@gmail.com>
+Date:   Tue Dec 13 23:23:31 2022 -0300
+
+    Implementado o painel de cadastro de paciente, bem como suas ligações com botoes
+
+[33mcommit be921cb38c5b39a7295d207d18e4be2f9720dd82[m
+Author: ZaniAndrei <zaniandrei1@gmail.com>
+Date:   Tue Dec 13 22:49:10 2022 -0300
+
+    Atestados do Paciente implementados
+
+[33mcommit a7deed1d2c5e0b8c25a495a62d9145cfd8b971fc[m
+Merge: 2d39871 35ae0b0
+Author: RuanUrb <ruaurb@alunos.utfpr.edu.br>
+Date:   Tue Dec 13 22:45:20 2022 -0300
+
+    dunno
+
+[33mcommit 2d398718f0114481e90ba1b64ee0f8f99e3063be[m
+Author: RuanUrb <ruaurb@alunos.utfpr.edu.br>
+Date:   Tue Dec 13 22:37:03 2022 -0300
+
+    Linking between windows
+
+[33mcommit 35ae0b0e99a6dab4a52585f19da5dadf41893218[m
+Merge: 06e20ef d7f75ff
+Author: ZaniAndrei <zaniandrei1@gmail.com>
+Date:   Tue Dec 13 22:15:34 2022 -0300
+
+    merge tentando denovo
+
+[33mcommit 06e20ef42c18c286c605ad5fe9ea77f5a958f148[m
+Author: ZaniAndrei <zaniandrei1@gmail.com>
+Date:   Tue Dec 13 22:13:03 2022 -0300
+
+    tentando merge
+
+[33mcommit 3a14df9091112ef8267fe5d9cdcf5962951acea0[m
+Author: ZaniAndrei <zaniandrei1@gmail.com>
+Date:   Tue Dec 13 21:57:24 2022 -0300
+
+    Tabela de visualizacao de consultas do cliente implementada
+
+[33mcommit a975844940728e15debc4972c1c5c9951d09ba53[m
+Author: ZaniAndrei <zaniandrei1@gmail.com>
+Date:   Tue Dec 13 21:45:08 2022 -0300
+
+    ta na mao
+
+[33mcommit 0375cbfdac8bc752bb395ff528444fa6e38bdc93[m
+Author: ZaniAndrei <zaniandrei1@gmail.com>
+Date:   Tue Dec 13 20:52:24 2022 -0300
+
+    Janela do Paciente feita
+
+[33mcommit 0527e9af053a21aba66bdcbc5f414fb04fce8fcc[m
+Author: ZaniAndrei <zaniandrei1@gmail.com>
+Date:   Tue Dec 13 20:39:31 2022 -0300
+
+    Painel de Cadastro implementado, Painel de paciente ainda sera criado
+
+[33mcommit d7f75ff8e667f436377c0011bea2f90d96d90bb5[m
+Author: RuanUrb <ruaurb@alunos.utfpr.edu.br>
+Date:   Tue Dec 13 18:59:33 2022 -0300
+
+    Registry searcher found
+
+[33mcommit b0b5758153709fa8b19861099b626b558c19cec1[m
+Author: RuanUrb <ruaurb@alunos.utfpr.edu.br>
+Date:   Tue Dec 13 18:31:29 2022 -0300
+
+    Data transfering between systems added
+
+[33mcommit 84ee43bca70146db25e7a1b7db3960d15b5a747e[m
+Author: RuanUrb <ruaurb@alunos.utfpr.edu.br>
+Date:   Tue Dec 13 18:11:57 2022 -0300
+
+    Substantial changes have been made.
+
+[33mcommit 58bdc32aeeeaed84f1ea874cc3b3c81a25010cb6[m
+Author: RuanUrb <ruaurb@alunos.utfpr.edu.br>
+Date:   Tue Dec 13 17:31:17 2022 -0300
+
+    Important methods added
+
+[33mcommit 74168da4624ab400a9861df15210f7d0bbf48fb2[m[33m ([m[1;32mmain[m[33m)[m
+Author: ZaniAndrei <zaniandrei1@gmail.com>
+Date:   Tue Dec 13 03:03:37 2022 -0300
+
+    IGNORAR ULTIMO COMMIT NOVAMENTE TINHA ESQUECIDO O BOTAO INSERIR ESSE E DEFINITIVO Implementei a pagina de cadastro do ADM, ele chama a pagina de cadastro quando clica em registrar(qualquer), nao implementei verificação
+
+[33mcommit 8d93e38060147d21605b24d5b51a9bf56e691342[m
+Author: ZaniAndrei <zaniandrei1@gmail.com>
+Date:   Tue Dec 13 02:59:27 2022 -0300
+
+    IGNORAR ULTIMO COMMIT Implementei a pagina de cadastro do ADM, ele chama a pagina de cadastro quando clica em registrar(qualquer), nao implementei verificação
+
+[33mcommit 4762a8245ef732f8e94b3831ed0ea5d343669045[m
+Author: ZaniAndrei <zaniandrei1@gmail.com>
+Date:   Tue Dec 13 02:56:43 2022 -0300
+
+    Implementei a pagina de cadastro do ADM, ele chama a pagina de cadastro quando clica em registrar(qualquer), nao implementei verificação
+
+[33mcommit 4ab1ee3f9e0c60af8df258d7b0ea96103f53a250[m
+Author: ZaniAndrei <zaniandrei1@gmail.com>
+Date:   Tue Dec 13 02:45:41 2022 -0300
+
+    Implementei a pagina inicial do ADM, ele chama o ADM quando clica em login, nao implementei verificação
+
+[33mcommit f1938a5c5ef42daad3a3a035c733a2aa6c9df3a1[m
+Author: ZaniAndrei <zaniandrei1@gmail.com>
+Date:   Tue Dec 13 02:34:25 2022 -0300
+
+    Implementei a pagina inicial do medico, ele chama o medico quando clica em login, nao implementei verificação
+
+[33mcommit 4a14bdd378ca3a99726db644344477c517afe455[m
+Author: RuanUrb <ruaurb@alunos.utfpr.edu.br>
+Date:   Mon Dec 12 23:14:41 2022 -0300
+
+    Design of first window finished
+
+[33mcommit 388554c93074ad61126d8992a4ade4f163133ad8[m
+Author: RuanUrb <ruaurb@alunos.utfpr.edu.br>
+Date:   Mon Dec 12 22:28:00 2022 -0300
+
+    Login window done
+
+[33mcommit 2c8e5490d0b6b33a600b321882677bc6f7d0b8d6[m
+Author: RuanUrb <ruaurb@alunos.utfpr.edu.br>
+Date:   Mon Dec 12 16:25:02 2022 -0300
+
+    Classes added
+
+[33mcommit 20b3511d18bb2cfb4c60b8f4717efa8376960b11[m
+Author: RuanUrb <ruaurb@alunos.utfpr.edu.br>
+Date:   Mon Dec 12 15:26:47 2022 -0300
+
+    Useless code deleted
+
+[33mcommit a4d74191ce8fe63ff4bab2e944242f79663718f3[m
+Author: RuanUrb <ruaurb@alunos.utfpr.edu.br>
+Date:   Sun Dec 11 20:25:47 2022 -0300
+
+    First upload

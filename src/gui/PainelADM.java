@@ -2,14 +2,28 @@
 package gui;
 
 import javax.swing.JFrame;
+import oop6.Admin;
+import oop6.Sistema;
 
 public class PainelADM extends javax.swing.JFrame {
-
+    Admin admin;
+    Sistema sistema_painel_adm;
   
     public PainelADM() {
+        admin = new Admin();
+        sistema_painel_adm = new Sistema();
         initComponents();
+        this.setLocationRelativeTo(null);
     }
-
+    
+    public void setAdmin(Admin novo_admin){
+        this.admin = novo_admin;
+    }
+    
+    public Admin getAdmin(){
+        return this.admin;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -52,6 +66,11 @@ public class PainelADM extends javax.swing.JFrame {
         jLabel1.setText("Painel Administrativo");
 
         jButton4.setText("Voltar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -92,18 +111,43 @@ public class PainelADM extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         PainelCadastroPaciente cadastroPaciente = new PainelCadastroPaciente();
+        cadastroPaciente.sistema_cadastro_paciente.carrega_listas(this.sistema_painel_adm.lista_funcionarios, this.sistema_painel_adm.lista_pacientes);
+        cadastroPaciente.sistema_cadastro_paciente.carrega_listas_medicas(this.sistema_painel_adm.lista_consultas, this.sistema_painel_adm.lista_atestados);
+        cadastroPaciente.setAdmin(this.getAdmin());
         cadastroPaciente.setVisible(true);
+        this.dispose();
+        //botao cadastro paciente
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         PainelCadastroFuncionario cadastroFuncionario = new PainelCadastroFuncionario();
-        cadastroFuncionario.setVisible(true);     
+        cadastroFuncionario.sistema_cadastro_funca.carrega_listas(this.sistema_painel_adm.lista_funcionarios, this.sistema_painel_adm.lista_pacientes);
+        cadastroFuncionario.sistema_cadastro_funca.carrega_listas_medicas(this.sistema_painel_adm.lista_consultas, this.sistema_painel_adm.lista_atestados);
+        cadastroFuncionario.setAdmin(this.getAdmin());
+        cadastroFuncionario.setVisible(true);
+        this.dispose();
+        //botao cadastro funça
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         PainelQuadroFuncionarios quadroFuncionarios = new PainelQuadroFuncionarios();
+        quadroFuncionarios.sistema_quadro.carrega_listas(this.sistema_painel_adm.lista_funcionarios, this.sistema_painel_adm.lista_pacientes);
+        quadroFuncionarios.sistema_quadro.carrega_listas_medicas(this.sistema_painel_adm.lista_consultas, this.sistema_painel_adm.lista_atestados);
+        quadroFuncionarios.setAdmin(this.getAdmin());
         quadroFuncionarios.setVisible(true);
+        quadroFuncionarios.showFuncas();
+        this.dispose();
+        //botao quadro
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        PainelLogin painel_login = new PainelLogin();
+        painel_login.setVisible(true);
+        painel_login.system_load_list(this.sistema_painel_adm.lista_funcionarios, this.sistema_painel_adm.lista_pacientes);
+        painel_login.sistema_painel.carrega_listas_medicas(this.sistema_painel_adm.lista_consultas, this.sistema_painel_adm.lista_atestados);
+        this.dispose();
+        
+    }//GEN-LAST:event_jButton4ActionPerformed
 
    
     public static void main(String args[]) {

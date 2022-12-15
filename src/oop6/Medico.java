@@ -9,4 +9,12 @@ public class Medico extends Funcionario{
         this.CRM = crm;
     }
     
+    public Medico(){
+    
+}
+    
+    public String getCRM(){
+        return this.CRM;
+    }
+    
 }

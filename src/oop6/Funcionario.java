@@ -2,7 +2,7 @@
 package oop6;
 
 
-public abstract class Funcionario {
+public class Funcionario {
     protected String nome;
     protected int cod_funcionario;
     protected long cpf;
@@ -17,11 +17,31 @@ public abstract class Funcionario {
         this.password = password;
     }
     
+    public Funcionario(){
+        
+    }
+    
     public String getEmail(){
         return this.email;
     }
     
     public String getPassword(){
         return this.password;
+    }
+    
+    public int get_codF(){
+        return this.cod_funcionario;
+    }
+    
+    public void set_codF(int codigo){
+        this.cod_funcionario = codigo;
+    }
+    
+    public String getNome(){
+        return this.nome;
+    }
+    
+    public float getSalario(){
+        return this.salario;
     }
 }

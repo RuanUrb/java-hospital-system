@@ -1,6 +1,6 @@
-
 package gui;
 
+import exception.EmailException;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Image;
@@ -12,19 +12,24 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import oop6.Admin;
 import oop6.Funcionario;
+import oop6.Medico;
 import oop6.Paciente;
 import oop6.Sistema;
 
 public class PainelLogin extends javax.swing.JFrame {
-    Sistema sistema_painel;
-    
+
+    public Sistema sistema_painel;
+
     public PainelLogin() {
         sistema_painel = new Sistema();
         initComponents();
+        this.setLocationRelativeTo(null);
     }
-    
-    public void system_load_list(ArrayList<Funcionario> lista_funcionarios, ArrayList<Paciente> lista_pacientes){
+
+    public void system_load_list(ArrayList<Funcionario> lista_funcionarios, ArrayList<Paciente> lista_pacientes) {
         sistema_painel.carrega_listas(lista_funcionarios, lista_pacientes);
     }
 
@@ -45,6 +50,7 @@ public class PainelLogin extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         image_label = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -79,6 +85,13 @@ public class PainelLogin extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel4.setText("hospitalar");
 
+        jButton2.setText("Sair");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -99,11 +112,14 @@ public class PainelLogin extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(image_label, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(27, 27, 27)
-                                .addComponent(jButton1))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(3, 3, 3))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(140, 140, 140)
                         .addComponent(jLabel4)))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,7 +140,9 @@ public class PainelLogin extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1)
-                        .addGap(52, 52, 52))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton2)
+                        .addGap(18, 18, 18))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(44, 44, 44)
                         .addComponent(image_label, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -145,43 +163,68 @@ public class PainelLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            String email = jTextField1.getText();
+            if (!email.contains("@"))
+                    throw new EmailException(email);
+            String password = String.valueOf(jPasswordField1.getPassword());
 
-        String email = jTextField1.getText();
-        String password = String.valueOf(jPasswordField1.getPassword());
-        
-        Funcionario funca = sistema_painel.procura_lista_funcionarios(email, password);
-        Paciente paciente = sistema_painel.procura_lista_pacientes(email, password);
-        
-        if(funca == null && paciente == null){
-            //janela de erro.
-            System.out.println("Encontrado porra nenhuma");
-        }
-        
-        if(funca != null && paciente == null){
-            if(funca.getClass().getSimpleName().compareTo("Admin") == 0){
-                PainelADM painel_adm = new PainelADM();
-                painel_adm.setVisible(true);
+            Funcionario funca = sistema_painel.procura_lista_funcionarios(email, password);
+            Paciente paciente = sistema_painel.procura_lista_pacientes(email, password);
+            if (funca == null && paciente == null) {
+                //janela de erro.
+                JOptionPane.showMessageDialog(null, "Nenhum usúario encontrado",
+                    "Sistema", JOptionPane.ERROR_MESSAGE);
+                //
+            }
+
+            if (funca != null && paciente == null) {
+                if (funca.getClass().getSimpleName().compareTo("Admin") == 0) {
+                    PainelADM painel_adm = new PainelADM();
+                    painel_adm.sistema_painel_adm.carrega_listas(this.sistema_painel.lista_funcionarios, this.sistema_painel.lista_pacientes);
+                    painel_adm.sistema_painel_adm.carrega_listas_medicas(this.sistema_painel.lista_consultas, this.sistema_painel.lista_atestados);
+                    painel_adm.setAdmin((Admin) funca);
+                    //setLabels() ?
+                    painel_adm.setVisible(true);
+                    this.dispose();
+                } else if (funca.getClass().getSimpleName().compareTo("Medico") == 0) {
+                    PainelMedico painel_medico = new PainelMedico();
+                    painel_medico.sistema_painel_medico.carrega_listas(this.sistema_painel.lista_funcionarios, this.sistema_painel.lista_pacientes);
+                    painel_medico.sistema_painel_medico.carrega_listas_medicas(this.sistema_painel.lista_consultas, this.sistema_painel.lista_atestados);
+                    painel_medico.setMedico((Medico) funca);
+                    painel_medico.setLabels();
+                    painel_medico.setVisible(true);
+                    this.dispose();
+                } else {
+                    PainelFuncionario painel_funca = new PainelFuncionario();
+                    painel_funca.setFunca(funca);
+                    painel_funca.sistema_painel_funca.carrega_listas(this.sistema_painel.lista_funcionarios, this.sistema_painel.lista_pacientes);
+                    painel_funca.sistema_painel_funca.carrega_listas_medicas(this.sistema_painel.lista_consultas, this.sistema_painel.lista_atestados);
+                    painel_funca.setLabels();
+                    painel_funca.setVisible(true);
+                    this.dispose();
+                }
+            }
+            if (paciente != null && funca == null) {
+                PainelPaciente painel_paciente = new PainelPaciente();
+                painel_paciente.setPaciente(paciente);
+                painel_paciente.sistema_painel_paciente.carrega_listas(this.sistema_painel.lista_funcionarios, this.sistema_painel.lista_pacientes);
+                painel_paciente.sistema_painel_paciente.carrega_listas_medicas(this.sistema_painel.lista_consultas, this.sistema_painel.lista_atestados);
+                painel_paciente.setLabels();
+                painel_paciente.setVisible(true);
                 this.dispose();
             }
-            else if(funca.getClass().getSimpleName().compareTo("Medico") == 0){
-                PainelMedico painel_medico = new PainelMedico();
-                painel_medico.setVisible(true);
-                this.setVisible(false);
-            }
-            else{
-            }
+
+        }catch(EmailException e) {
+            e.printError();
         }
-        if(paciente != null && funca == null){
-           PainelPaciente painel_paciente = new PainelPaciente();
-           painel_paciente.setPaciente(paciente);
-           painel_paciente.setLabels();
-           painel_paciente.setVisible(true);
-           this.setVisible(false);
-        }
-        
-        
- 
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -221,6 +264,7 @@ public class PainelLogin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel image_label;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

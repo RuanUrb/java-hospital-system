@@ -1,14 +1,24 @@
 
 package gui;
 
+import java.util.ArrayList;
+import oop6.Funcionario;
 import oop6.Paciente;
+import oop6.Sistema;
 
 public class PainelPaciente extends javax.swing.JFrame {
     Paciente paciente;
+    Sistema sistema_painel_paciente;
     
     public PainelPaciente() {
+        sistema_painel_paciente = new Sistema();
         paciente = new Paciente();
         initComponents();
+        this.setLocationRelativeTo(null);
+    }
+    
+    public void system_load_list(ArrayList<Funcionario> lista_funcionarios, ArrayList<Paciente> lista_pacientes){
+        sistema_painel_paciente.carrega_listas(lista_funcionarios, lista_pacientes);
     }
     
     public void setPaciente(Paciente novo_paciente){
@@ -18,6 +28,7 @@ public class PainelPaciente extends javax.swing.JFrame {
     public void setLabels(){
         jLabel1.setText("Bem vindo(a), ");
         jLabel2.setText(this.paciente.getNome());
+        jLabel4.setText(""+ this.paciente.get_codP());
     }
     
     /**
@@ -34,14 +45,15 @@ public class PainelPaciente extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Bem vindo, ");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel2.setText("nomePaciente");
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
         jButton1.setText("Ver Consultas");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -58,17 +70,18 @@ public class PainelPaciente extends javax.swing.JFrame {
         });
 
         jButton3.setText("Voltar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Código do paciente:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addComponent(jButton1)
@@ -79,6 +92,16 @@ public class PainelPaciente extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton3)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -87,7 +110,11 @@ public class PainelPaciente extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
@@ -100,16 +127,33 @@ public class PainelPaciente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        PainelAtestadosPaciente atestadosPaciente = new PainelAtestadosPaciente();
-        atestadosPaciente.setVisible(true);
-        this.setVisible(false);
+        PainelAtestadosPaciente painel_atestadosPaciente = new PainelAtestadosPaciente();
+        painel_atestadosPaciente.setPaciente(paciente);
+        painel_atestadosPaciente.sistema_painel_atestado_paciente.carrega_listas(this.sistema_painel_paciente.lista_funcionarios, this.sistema_painel_paciente.lista_pacientes);
+        painel_atestadosPaciente.sistema_painel_atestado_paciente.carrega_listas_medicas(this.sistema_painel_paciente.lista_consultas, this.sistema_painel_paciente.lista_atestados);
+        painel_atestadosPaciente.carrega_atestados();
+        painel_atestadosPaciente.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        PainelConsultasPaciente painel_consultas_paciente = new PainelConsultasPaciente();
-        painel_consultas_paciente.setVisible(true);
-        this.setVisible(false);
+
+         PainelConsultasPaciente painel_consultas_paciente = new PainelConsultasPaciente();
+         painel_consultas_paciente.setPaciente(paciente);
+         painel_consultas_paciente.sistema_painel_consulta_paciente.carrega_listas(this.sistema_painel_paciente.lista_funcionarios, this.sistema_painel_paciente.lista_pacientes);
+         painel_consultas_paciente.sistema_painel_consulta_paciente.carrega_listas_medicas(this.sistema_painel_paciente.lista_consultas, this.sistema_painel_paciente.lista_atestados);
+         painel_consultas_paciente.carrega_consultas();
+         painel_consultas_paciente.setVisible(true);
+         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        PainelLogin painel_login = new PainelLogin();
+        painel_login.setVisible(true);
+        painel_login.system_load_list(this.sistema_painel_paciente.lista_funcionarios, this.sistema_painel_paciente.lista_pacientes);
+        painel_login.sistema_painel.carrega_listas_medicas(this.sistema_painel_paciente.lista_consultas, this.sistema_painel_paciente.lista_atestados);
+        this.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,5 +196,7 @@ public class PainelPaciente extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }

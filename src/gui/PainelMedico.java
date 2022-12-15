@@ -1,22 +1,33 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package gui;
 
-/**
- *
- * @author zania
- */
+import oop6.Medico;
+import oop6.Sistema;
+
+
 public class PainelMedico extends javax.swing.JFrame {
-
-    /**
-     * Creates new form PainelMedico
-     */
+    Sistema sistema_painel_medico;
+    Medico medico;
     public PainelMedico() {
+        sistema_painel_medico = new Sistema();
+        medico = new Medico();
         initComponents();
+        this.setLocationRelativeTo(null);
     }
-
+    
+    public void setMedico(Medico novo_medico){
+        this.medico = novo_medico;
+    }
+    
+    public void setLabels(){
+        jLabel2.setText(this.medico.getNome());
+        jLabel4.setText(this.medico.getCRM());
+    }
+    
+    public Medico getMedico(){
+        return this.medico;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -42,19 +53,20 @@ public class PainelMedico extends javax.swing.JFrame {
         jLabel1.setText("Bem vindo(a), ");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(51, 102, 255));
-        jLabel2.setText("nomeMedico");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setText("CRM:");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 102, 255));
-        jLabel4.setText("CRMMedico");
 
         jButton1.setText("Gerar Atestado");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Ver Consulta");
+        jButton2.setText("Ver Consultas");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -62,10 +74,25 @@ public class PainelMedico extends javax.swing.JFrame {
         });
 
         jButton3.setText("Desmarcar Consulta");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("Remover Consulta");
+        jButton4.setText("Marcar Consulta");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Voltar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -130,8 +157,52 @@ public class PainelMedico extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        PainelConsultasMedico painel_consultas = new PainelConsultasMedico();
+        painel_consultas.sistema_painel_consulta_paciente.carrega_listas(this.sistema_painel_medico.lista_funcionarios, this.sistema_painel_medico.lista_pacientes);
+        painel_consultas.sistema_painel_consulta_paciente.carrega_listas_medicas(this.sistema_painel_medico.lista_consultas, this.sistema_painel_medico.lista_atestados);
+        painel_consultas.setMedico(this.getMedico());
+        painel_consultas.carrega_consultas();
+        painel_consultas.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        //voltar
+        PainelLogin painel_login = new PainelLogin();
+        painel_login.sistema_painel.carrega_listas(this.sistema_painel_medico.lista_funcionarios, this.sistema_painel_medico.lista_pacientes);
+        painel_login.sistema_painel.carrega_listas_medicas(this.sistema_painel_medico.lista_consultas, this.sistema_painel_medico.lista_atestados);
+        painel_login.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //gerar atestado botao
+        PainelGerarAtestado painel_atestado = new PainelGerarAtestado();
+        painel_atestado.sistema_painel_atestado.carrega_listas(this.sistema_painel_medico.lista_funcionarios, this.sistema_painel_medico.lista_pacientes);
+        painel_atestado.sistema_painel_atestado.carrega_listas_medicas(this.sistema_painel_medico.lista_consultas, this.sistema_painel_medico.lista_atestados);
+        painel_atestado.setMedico(this.getMedico());
+        painel_atestado.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        PainelDesmarcarConsulta painel_desmarcar = new PainelDesmarcarConsulta();
+        painel_desmarcar.sistema_painel_consulta_paciente.carrega_listas(this.sistema_painel_medico.lista_funcionarios, this.sistema_painel_medico.lista_pacientes);
+        painel_desmarcar.sistema_painel_consulta_paciente.carrega_listas_medicas(this.sistema_painel_medico.lista_consultas, this.sistema_painel_medico.lista_atestados);
+        painel_desmarcar.setMedico(this.getMedico());
+        painel_desmarcar.carrega_consultas();
+        painel_desmarcar.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        PainelMarcarConsulta painel_marcar = new PainelMarcarConsulta();
+        painel_marcar.sistema_painel_marcar.carrega_listas(this.sistema_painel_medico.lista_funcionarios, this.sistema_painel_medico.lista_pacientes);
+        painel_marcar.sistema_painel_marcar.carrega_listas_medicas(this.sistema_painel_medico.lista_consultas, this.sistema_painel_medico.lista_atestados);
+        painel_marcar.setMedico(this.getMedico());
+        painel_marcar.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
