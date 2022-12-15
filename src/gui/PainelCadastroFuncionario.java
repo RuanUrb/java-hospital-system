@@ -1,8 +1,6 @@
 
 package gui;
 import exception.EmailException;
-import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
 
 import oop6.Admin;
@@ -15,9 +13,6 @@ public class PainelCadastroFuncionario extends javax.swing.JFrame {
     Sistema sistema_cadastro_funca;
     Admin admin;
     private boolean pressionado = true;
-    public float salario;
-    public long CPF;
-    public String email;
     
     public PainelCadastroFuncionario() {
         sistema_cadastro_funca = new Sistema();
@@ -263,47 +258,48 @@ public class PainelCadastroFuncionario extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String nome = jTextField1.getText();
-        
+        float salario;
+        long CPF;
+        String email;
         try{
             email = jTextField2.getText();
             if (!email.contains("@"))
                     throw new EmailException(email);
             CPF = Long.parseLong(jTextField4.getText());
             salario = Float.parseFloat(jTextField3.getText());
+            String password = String.valueOf(jPasswordField1.getPassword());
+        String crm = fieldCRM.getText();
+        if(comboOcupacao.getSelectedItem() == "Médico(a)"){
+            Funcionario novo_funcionario = new Medico(nome, email, password, CPF, salario, crm);
+            sistema_cadastro_funca.adiciona(novo_funcionario);
+            JOptionPane.showMessageDialog(null, "Cadastrado com sucesso.", "Sistema", JOptionPane.INFORMATION_MESSAGE);
+            zerarTextFields();
+        }
+        
+        else if(comboOcupacao.getSelectedItem() == "Enfermeiro(a)"){
+            Funcionario novo_funcionario = new Enfermeiro(nome, email, password, CPF, salario);
+            sistema_cadastro_funca.adiciona(novo_funcionario);
+            JOptionPane.showMessageDialog(null, "Cadastrado com sucesso.", "Sistema", JOptionPane.INFORMATION_MESSAGE);
+            zerarTextFields();
+        }
+        
+        else if(comboOcupacao.getSelectedItem() == "ADM"){
+            Funcionario novoFuncionario = new Admin(nome, email, password, CPF, salario);
+            sistema_cadastro_funca.adiciona(novoFuncionario);
+            JOptionPane.showMessageDialog(null, "Cadastrado com sucesso.", "Sistema", JOptionPane.INFORMATION_MESSAGE);
+            zerarTextFields();
+        }
+        
+        else{
+            JOptionPane.showMessageDialog(null, "Escolha uma profissão",
+                    "Sistema", JOptionPane.ERROR_MESSAGE);
+        }
         }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(null, "Digite um valor válido",
                     "Sistema", JOptionPane.ERROR_MESSAGE);
         }catch(EmailException e){
             e.printError();
         }
-        String password = String.valueOf(jPasswordField1.getPassword());
-        String crm = fieldCRM.getText();
-        if(comboOcupacao.getSelectedItem() == "Médico(a)"){
-            Funcionario novo_funcionario = new Medico(nome, email, password, CPF, salario, crm);
-            sistema_cadastro_funca.adiciona(novo_funcionario);
-            //janela dialog indicando sucesso
-            zerarTextFields();
-            
-            
-        }
-        else if(comboOcupacao.getSelectedItem() == "Enfermeiro(a)"){
-            Funcionario novo_funcionario = new Enfermeiro(nome, email, password, CPF, salario);
-            sistema_cadastro_funca.adiciona(novo_funcionario);
-            //sucesso
-            zerarTextFields();
-        }
-        else if(comboOcupacao.getSelectedItem() == "ADM"){
-            Funcionario novoFuncionario = new Admin(nome, email, password, CPF, salario);
-            sistema_cadastro_funca.adiciona(novoFuncionario);
-            //sucesso
-            zerarTextFields();
-        }
-        else{
-            JOptionPane.showMessageDialog(null, "Escolha uma profissão",
-                    "Sistema", JOptionPane.ERROR_MESSAGE);
-        }
-    
-        
     }//GEN-LAST:event_jButton2ActionPerformed
     
     private void zerarTextFields(){

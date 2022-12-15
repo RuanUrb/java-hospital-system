@@ -11,8 +11,6 @@ import oop6.Sistema;
 public class PainelCadastroPaciente extends javax.swing.JFrame {
     Sistema sistema_cadastro_paciente;
     Admin admin;
-    public String email;
-    public long CPF;
     
     public PainelCadastroPaciente() {
         sistema_cadastro_paciente = new Sistema();
@@ -193,23 +191,25 @@ public class PainelCadastroPaciente extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //botao enviar
+        String email;
+        long CPF;
         String nome = jTextField1.getText();
         try{
             CPF = Long.parseLong(jTextField2.getText());
             email = jTextField3.getText();
             if (!email.contains("@"))
                     throw new EmailException(email);
+        String password = String.valueOf(jPasswordField1.getPassword());
+        Paciente novo_paciente = new Paciente(nome, email, password, CPF);
+        sistema_cadastro_paciente.adiciona(novo_paciente);
+        JOptionPane.showMessageDialog(null, "Cadastrado com sucesso.", "Sistema", JOptionPane.INFORMATION_MESSAGE);
+
         }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(null, "Digite um valor válido",
                     "Sistema", JOptionPane.ERROR_MESSAGE);
         }catch(EmailException e){
             e.printError();
         }
-        String password = String.valueOf(jPasswordField1.getPassword());
-        Paciente novo_paciente = new Paciente(nome, email, password, CPF);
-        sistema_cadastro_paciente.adiciona(novo_paciente);
-        //sucesso
         zerarTextFields();
     }//GEN-LAST:event_jButton1ActionPerformed
 

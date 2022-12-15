@@ -13,7 +13,6 @@ import oop6.Sistema;
 public class PainelDesmarcarConsulta extends javax.swing.JFrame {
     Sistema sistema_painel_consulta_paciente;
     Medico medico;
-    public int valor;
     
     public PainelDesmarcarConsulta() {
         medico = new Medico();
@@ -178,19 +177,20 @@ public class PainelDesmarcarConsulta extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoVoltarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int valor;
         try{
             valor = Integer.parseInt(jTextField1.getText());
+            for(int i = 0; i < this.sistema_painel_consulta_paciente.lista_consultas.size(); i++){
+            if(valor == this.sistema_painel_consulta_paciente.lista_consultas.get(i).getID()){
+                this.sistema_painel_consulta_paciente.deletar_consulta(i);
+            }
+        }
+            JOptionPane.showMessageDialog(null, "Consulta desmarcada com sucesso.", "Sistema", JOptionPane.INFORMATION_MESSAGE);
         }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(null, "Digite um valor válido",
                     "Sistema", JOptionPane.ERROR_MESSAGE);
         }
         jTextField1.setText("");
-        for(int i = 0; i < this.sistema_painel_consulta_paciente.lista_consultas.size(); i++){
-            if(valor == this.sistema_painel_consulta_paciente.lista_consultas.get(i).getID()){
-                this.sistema_painel_consulta_paciente.deletar_consulta(i);
-            }
-        }
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
    

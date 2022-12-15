@@ -200,10 +200,12 @@ public class PainelMarcarConsulta extends javax.swing.JFrame {
         LocalDate data = LocalDate.of(year, month, day);
         Consulta nova_consulta = new Consulta(nome_paciente, sala, razao, this.medico.getNome(), data, valor);
         this.sistema_painel_marcar.adiciona(nova_consulta);
-        //janela atestado criado com sucesso
+        JOptionPane.showMessageDialog(null, "Consulta marcada com sucesso.", "Sistema", JOptionPane.INFORMATION_MESSAGE);
         jTextField1.setText("");
         jTextField2.setText("");
         jTextField3.setText("");
+        jTextField4.setText("");
+        jTextField5.setText("");
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
